@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title>文钊 - 个人百科</title>
+    <title>文钊 - 个人主页</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="style.css">
     <style>
@@ -13,40 +13,82 @@
             background: #f7f8fa;
             color: #222;
         }
-        .baike-navbar {
-            width: 100%;
-            background: #fff;
-            border-bottom: 1px solid #e5e6eb;
+        .wrapper {
+            display: flex;
+            min-height: 100vh;
+        }
+        .sidebar {
+            width: 270px;
+            background: #222;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 0 20px 0;
+            min-height: 100vh;
+            position: fixed;
+            left: 0;
+            top: 0;
+            z-index: 10;
+        }
+        .sidebar .avatar {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            background: #eaf1fb;
+            margin-bottom: 18px;
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            padding: 0 32px;
-            height: 56px;
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 100;
-        }
-        .baike-navbar .baike-logo {
-            font-size: 1.6em;
-            font-weight: bold;
-            color: #222;
-            letter-spacing: 2px;
-        }
-        .baike-navbar .baike-logo .baike {
+            justify-content: center;
+            font-size: 2.7em;
             color: #2a7ae2;
-            font-weight: bold;
+            overflow: hidden;
+        }
+        .sidebar h1 {
+            font-size: 1.6em;
+            margin: 0 0 8px 0;
+            font-weight: 700;
+            color: #fff;
+        }
+        .sidebar .subtitle {
+            color: #b0b0b0;
+            font-size: 1.05em;
+            margin-bottom: 18px;
+        }
+        .sidebar nav {
+            width: 100%;
+            margin: 30px 0 30px 0;
+        }
+        .sidebar nav a {
+            display: block;
+            width: 100%;
+            padding: 10px 0 10px 0;
+            text-align: center;
+            color: #b0b0b0;
+            text-decoration: none;
+            font-size: 1.08em;
+            transition: background 0.2s, color 0.2s;
+        }
+        .sidebar nav a:hover, .sidebar nav a.active {
+            background: #2a7ae2;
+            color: #fff;
+        }
+        .sidebar .contact {
+            margin-top: auto;
+            font-size: 0.98em;
+            color: #b0b0b0;
+            word-break: break-all;
+            text-align: center;
         }
         .lang-btns {
-            position: static;
-            margin-left: 24px;
+            margin: 18px 0 0 0;
         }
         .lang-btns button {
-            margin-left: 8px;
+            margin: 0 4px;
             padding: 4px 12px;
             border: none;
-            background: #eaf1fb;
-            color: #2a7ae2;
+            background: #444;
+            color: #fff;
             border-radius: 12px;
             cursor: pointer;
             font-size: 1em;
@@ -56,80 +98,28 @@
             color: #fff;
         }
         .main-content {
-            display: flex;
-            max-width: 1100px;
-            margin: 80px auto 0 auto;
-            gap: 32px;
-            align-items: flex-start;
-        }
-        .side-card {
-            width: 270px;
-            background: #fff;
-            border-radius: 10px;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-            padding: 28px 20px 20px 20px;
-            text-align: center;
-        }
-        .side-card .avatar {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            background: #eaf1fb;
-            margin: 0 auto 18px auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.5em;
-            color: #2a7ae2;
-            overflow: hidden;
-        }
-        .side-card h1 {
-            font-size: 1.5em;
-            margin: 0 0 8px 0;
-            font-weight: 700;
-        }
-        .side-card .subtitle {
-            color: #888;
-            font-size: 1.05em;
-            margin-bottom: 18px;
-        }
-        .side-card ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            text-align: left;
-        }
-        .side-card ul li {
-            margin-bottom: 10px;
-            font-size: 1em;
-        }
-        .side-card .contact {
-            margin-top: 18px;
-            font-size: 0.98em;
-            color: #555;
-            word-break: break-all;
-        }
-        .entry-content {
+            margin-left: 270px;
             flex: 1;
-            background: #fff;
-            border-radius: 10px;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-            padding: 36px 38px 28px 38px;
+            padding: 48px 48px 32px 48px;
+            max-width: 900px;
         }
-        .entry-content h2 {
-            font-size: 1.25em;
+        .main-content section {
+            margin-bottom: 40px;
+        }
+        .main-content h2 {
+            font-size: 1.3em;
             color: #2a7ae2;
             border-left: 4px solid #2a7ae2;
             padding-left: 10px;
             margin-bottom: 16px;
             font-weight: 600;
         }
-        .entry-content ul {
+        .main-content ul {
             list-style: none;
             padding-left: 0;
             margin: 0 0 18px 0;
         }
-        .entry-content ul li {
+        .main-content ul li {
             margin-bottom: 12px;
             line-height: 1.7;
         }
@@ -157,9 +147,21 @@
             margin: 40px 0 10px 0;
         }
         @media (max-width: 900px) {
-            .main-content { flex-direction: column; gap: 0; }
-            .side-card { width: 100%; margin-bottom: 20px; }
-            .entry-content { padding: 24px 10px 18px 10px; }
+            .wrapper { flex-direction: column; }
+            .sidebar {
+                position: static;
+                width: 100%;
+                min-height: unset;
+                flex-direction: row;
+                justify-content: flex-start;
+                padding: 20px 0 10px 0;
+                height: auto;
+            }
+            .sidebar .avatar { width: 60px; height: 60px; font-size: 1.5em; margin-bottom: 0; }
+            .sidebar h1, .sidebar .subtitle, .sidebar nav, .sidebar .contact, .lang-btns {
+                display: none;
+            }
+            .main-content { margin-left: 0; padding: 24px 8px 18px 8px; }
         }
         .lang-zh { display: block; }
         .lang-en { display: none; }
@@ -168,18 +170,8 @@
     </style>
 </head>
 <body>
-    <div class="baike-navbar">
-        <div class="baike-logo">
-            <span class="lang-zh">文钊 <span class="baike">百科</span></span>
-            <span class="lang-en">Marvin Wen <span class="baike">Baike</span></span>
-        </div>
-        <div class="lang-btns">
-            <button id="btn-zh" class="active">中文</button>
-            <button id="btn-en">EN</button>
-        </div>
-    </div>
-    <div class="main-content">
-        <aside class="side-card">
+    <div class="wrapper">
+        <aside class="sidebar">
             <div class="avatar">
                 <!-- 可替换为头像图片 -->
                 <span>WZ</span>
@@ -192,22 +184,22 @@
                 <span class="lang-zh">Go/Web3 全栈开发者</span>
                 <span class="lang-en">Go/Web3 Full Stack Developer</span>
             </div>
-            <ul>
-                <li>
-                    <span class="lang-zh">现居地：成都</span>
-                    <span class="lang-en">Location: Chengdu</span>
-                </li>
-                <li>
-                    <span class="lang-zh">硕士 · 电子科技大学</span>
-                    <span class="lang-en">M.S. · UESTC</span>
-                </li>
-            </ul>
+            <nav>
+                <a href="#about" class="active"><span class="lang-zh">简介</span><span class="lang-en">Profile</span></a>
+                <a href="#education"><span class="lang-zh">教育经历</span><span class="lang-en">Education</span></a>
+                <a href="#projects"><span class="lang-zh">项目经历</span><span class="lang-en">Projects</span></a>
+                <a href="#skills"><span class="lang-zh">技术栈</span><span class="lang-en">Tech Stack</span></a>
+            </nav>
+            <div class="lang-btns">
+                <button id="btn-zh" class="active">中文</button>
+                <button id="btn-en">EN</button>
+            </div>
             <div class="contact">
                 <span class="lang-zh">邮箱：marvin.wensap@gmail.com</span>
                 <span class="lang-en">Email: marvin.wensap@gmail.com</span>
             </div>
         </aside>
-        <main class="entry-content">
+        <main class="main-content">
             <section id="about">
                 <h2>
                     <span class="lang-zh">简介</span>
@@ -297,6 +289,14 @@
             btnEn.classList.add('active');
             btnZh.classList.remove('active');
         };
+        // 导航高亮
+        const navLinks = document.querySelectorAll('.sidebar nav a');
+        navLinks.forEach(link => {
+            link.onclick = function() {
+                navLinks.forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+            }
+        });
     </script>
 </body>
 </html>
