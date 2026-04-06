@@ -2,14 +2,50 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title>个人主页 | GitHub Page</title>
+    <title>文钊 | 个人主页</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="style.css">
     <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Helvetica Neue', Helvetica, Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background: #f7f8fa;
+            color: #222;
+        }
+        .navbar {
+            width: 100%;
+            background: #fff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 100;
+            height: 60px;
+        }
+        .navbar .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #2a7ae2;
+            letter-spacing: 1px;
+        }
+        .navbar nav a {
+            margin: 0 18px;
+            color: #222;
+            text-decoration: none;
+            font-size: 1em;
+            transition: color 0.2s;
+        }
+        .navbar nav a:hover {
+            color: #2a7ae2;
+        }
         .lang-btns {
-            position: absolute;
-            right: 32px;
-            top: 32px;
+            position: static;
+            margin-left: 24px;
         }
         .lang-btns button {
             margin-left: 8px;
@@ -25,6 +61,78 @@
             background: #2a7ae2;
             color: #fff;
         }
+        .hero {
+            padding: 120px 0 60px 0;
+            background: linear-gradient(90deg, #eaf1fb 0%, #fff 100%);
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 2.8em;
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+        .hero p {
+            font-size: 1.3em;
+            color: #555;
+            margin-bottom: 0;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+            padding: 40px 32px 24px 32px;
+            margin-top: 40px;
+        }
+        section {
+            margin-bottom: 40px;
+        }
+        section h2 {
+            font-size: 1.4em;
+            color: #2a7ae2;
+            border-left: 4px solid #2a7ae2;
+            padding-left: 10px;
+            margin-bottom: 18px;
+            font-weight: 600;
+        }
+        ul {
+            list-style: none;
+            padding-left: 0;
+            margin: 0;
+        }
+        ul li {
+            margin-bottom: 12px;
+            line-height: 1.7;
+        }
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .skills span {
+            background: #eaf1fb;
+            color: #2a7ae2;
+            border-radius: 16px;
+            padding: 6px 16px;
+            font-size: 1em;
+            margin-bottom: 6px;
+            transition: background 0.2s;
+        }
+        .skills span:hover {
+            background: #d0e3fa;
+        }
+        footer {
+            text-align: center;
+            color: #aaa;
+            font-size: 0.95em;
+            margin: 40px 0 10px 0;
+        }
+        @media (max-width: 700px) {
+            .navbar { padding: 0 10px; }
+            .container { padding: 20px 6px 12px 6px; }
+            .hero { padding: 80px 0 30px 0; }
+        }
         .lang-zh { display: block; }
         .lang-en { display: none; }
         body.en .lang-zh { display: none; }
@@ -32,25 +140,37 @@
     </style>
 </head>
 <body>
-    <div class="lang-btns">
-        <button id="btn-zh" class="active">中文</button>
-        <button id="btn-en">EN</button>
+    <div class="navbar">
+        <div class="logo">
+            <span class="lang-zh">文钊</span>
+            <span class="lang-en">Marvin Wen</span>
+        </div>
+        <nav>
+            <a href="#about"><span class="lang-zh">基本情况</span><span class="lang-en">About</span></a>
+            <a href="#education"><span class="lang-zh">教育经历</span><span class="lang-en">Education</span></a>
+            <a href="#projects"><span class="lang-zh">项目经历</span><span class="lang-en">Projects</span></a>
+            <a href="#skills"><span class="lang-zh">技术栈</span><span class="lang-en">Tech Stack</span></a>
+        </nav>
+        <div class="lang-btns">
+            <button id="btn-zh" class="active">中文</button>
+            <button id="btn-en">EN</button>
+        </div>
+    </div>
+    <div class="hero">
+        <h1>
+            <span class="lang-zh">Go/Web3 全栈开发者</span>
+            <span class="lang-en">Go/Web3 Full Stack Developer</span>
+        </h1>
+        <p>
+            <span class="lang-zh">专注于高性能后端、分布式系统与区块链创新应用</span>
+            <span class="lang-en">Focus on high-performance backend, distributed systems, and blockchain innovation</span>
+        </p>
     </div>
     <div class="container">
-        <header>
-            <h1>
-                <span class="lang-zh">文钊</span>
-                <span class="lang-en">Marvin Wen</span>
-            </h1>
-            <p>
-                <span class="lang-zh">GoLang/Web 3 开发者 | stack-marvin-wen.github.io</span>
-                <span class="lang-en">GoLang/Web 3 Developer | stack-marvin-wen.github.io</span>
-            </p>
-        </header>
-        <section>
+        <section id="about">
             <h2>
                 <span class="lang-zh">基本情况</span>
-                <span class="lang-en">Basic Info</span>
+                <span class="lang-en">About</span>
             </h2>
             <ul>
                 <li>
@@ -62,12 +182,12 @@
                     <span class="lang-en">Location: Chengdu</span>
                 </li>
                 <li>
-                    <span class="lang-zh">个人简介：热爱技术，专注于Web开发与系统架构。</span>
-                    <span class="lang-en">About: Passionate about technology, focusing on web development and system architecture.</span>
+                    <span class="lang-zh">热爱技术，专注于Web开发、系统架构与区块链创新。</span>
+                    <span class="lang-en">Passionate about technology, focusing on web development, system architecture, and blockchain innovation.</span>
                 </li>
             </ul>
         </section>
-        <section>
+        <section id="education">
             <h2>
                 <span class="lang-zh">教育经历</span>
                 <span class="lang-en">Education</span>
@@ -83,7 +203,7 @@
                 </li>
             </ul>
         </section>
-        <section>
+        <section id="projects">
             <h2>
                 <span class="lang-zh">项目经历</span>
                 <span class="lang-en">Projects</span>
@@ -94,7 +214,7 @@
                         <span class="lang-zh">智能问答系统</span>
                         <span class="lang-en">Intelligent Q&A System</span>
                     </strong>
-                    <span class="lang-zh">（2022）<br>负责前端与后端架构设计，实现自然语言处理与知识图谱集成。</span>
+                    <span class="lang-zh">（2022）<br>负责前后端架构设计，实现自然语言处理与知识图谱集成。</span>
                     <span class="lang-en">(2022)<br>Responsible for frontend and backend architecture, integrating NLP and knowledge graph.</span>
                 </li>
                 <li>
@@ -107,7 +227,7 @@
                 </li>
             </ul>
         </section>
-        <section>
+        <section id="skills">
             <h2>
                 <span class="lang-zh">技术栈</span>
                 <span class="lang-en">Tech Stack</span>
@@ -123,13 +243,13 @@
                 <span>Azure Cloud</span>
             </div>
         </section>
-        <footer>
-            <p>
-                <span class="lang-zh">© 2024 文钊 | 基于 GitHub Pages</span>
-                <span class="lang-en">© 2024 Marvin Wen | Powered by GitHub Pages</span>
-            </p>
-        </footer>
     </div>
+    <footer>
+        <p>
+            <span class="lang-zh">© 2024 文钊 | 基于 GitHub Pages</span>
+            <span class="lang-en">© 2024 Marvin Wen | Powered by GitHub Pages</span>
+        </p>
+    </footer>
     <script>
         const btnZh = document.getElementById('btn-zh');
         const btnEn = document.getElementById('btn-en');
