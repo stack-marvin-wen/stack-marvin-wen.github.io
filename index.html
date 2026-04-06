@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>个人主页 | GitHub Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .lang-btns {
+            position: absolute;
+            right: 32px;
+            top: 32px;
+        }
+        .lang-btns button {
+            margin-left: 8px;
+            padding: 4px 12px;
+            border: none;
+            background: #eaf1fb;
+            color: #2a7ae2;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+        .lang-btns button.active {
+            background: #2a7ae2;
+            color: #fff;
+        }
+        .lang-zh { display: block; }
+        .lang-en { display: none; }
+        body.en .lang-zh { display: none; }
+        body.en .lang-en { display: block; }
+    </style>
+</head>
+<body>
+    <div class="lang-btns">
+        <button id="btn-zh" class="active">中文</button>
+        <button id="btn-en">EN</button>
+    </div>
+    <div class="container">
+        <header>
+            <h1>
+                <span class="lang-zh">文钊</span>
+                <span class="lang-en">Marvin Wen</span>
+            </h1>
+            <p>
+                <span class="lang-zh">GoLang/Web 3 开发者 | stack-marvin-wen.github.io</span>
+                <span class="lang-en">GoLang/Web 3 Developer | stack-marvin-wen.github.io</span>
+            </p>
+        </header>
+        <section>
+            <h2>
+                <span class="lang-zh">基本情况</span>
+                <span class="lang-en">Basic Info</span>
+            </h2>
+            <ul>
+                <li>
+                    <span class="lang-zh">邮箱：marvin.wensap@gmail.com</span>
+                    <span class="lang-en">Email: marvin.wensap@gmail.com</span>
+                </li>
+                <li>
+                    <span class="lang-zh">现居地：成都</span>
+                    <span class="lang-en">Location: Chengdu</span>
+                </li>
+                <li>
+                    <span class="lang-zh">个人简介：热爱技术，专注于Web开发与系统架构。</span>
+                    <span class="lang-en">About: Passionate about technology, focusing on web development and system architecture.</span>
+                </li>
+            </ul>
+        </section>
+        <section>
+            <h2>
+                <span class="lang-zh">教育经历</span>
+                <span class="lang-en">Education</span>
+            </h2>
+            <ul>
+                <li>
+                    <span class="lang-zh">2019 - 2022 &nbsp; 电子科技大学 &nbsp; 软件工程 硕士</span>
+                    <span class="lang-en">2019 - 2022 &nbsp; UESTC &nbsp; M.S. in Software Engineering</span>
+                </li>
+                <li>
+                    <span class="lang-zh">2015 - 2019 &nbsp; 西南石油大学 &nbsp; 软件工程 本科</span>
+                    <span class="lang-en">2015 - 2019 &nbsp; SWPU &nbsp; B.S. in Software Engineering</span>
+                </li>
+            </ul>
+        </section>
+        <section>
+            <h2>
+                <span class="lang-zh">项目经历</span>
+                <span class="lang-en">Projects</span>
+            </h2>
+            <ul>
+                <li>
+                    <strong>
+                        <span class="lang-zh">智能问答系统</span>
+                        <span class="lang-en">Intelligent Q&A System</span>
+                    </strong>
+                    <span class="lang-zh">（2022）<br>负责前端与后端架构设计，实现自然语言处理与知识图谱集成。</span>
+                    <span class="lang-en">(2022)<br>Responsible for frontend and backend architecture, integrating NLP and knowledge graph.</span>
+                </li>
+                <li>
+                    <strong>
+                        <span class="lang-zh">在线协作文档平台</span>
+                        <span class="lang-en">Online Collaborative Document Platform</span>
+                    </strong>
+                    <span class="lang-zh">（2021）<br>参与实时协作功能开发，优化系统性能与用户体验。</span>
+                    <span class="lang-en">(2021)<br>Developed real-time collaboration features, optimized performance and user experience.</span>
+                </li>
+            </ul>
+        </section>
+        <section>
+            <h2>
+                <span class="lang-zh">技术栈</span>
+                <span class="lang-en">Tech Stack</span>
+            </h2>
+            <div class="skills">
+                <span>Go</span>
+                <span>JavaScript</span>
+                <span>Python</span>
+                <span>Docker</span>
+                <span>Git</span>
+                <span>MySQL</span>
+                <span>Kubernetes</span>
+                <span>Azure Cloud</span>
+            </div>
+        </section>
+        <footer>
+            <p>
+                <span class="lang-zh">© 2024 文钊 | 基于 GitHub Pages</span>
+                <span class="lang-en">© 2024 Marvin Wen | Powered by GitHub Pages</span>
+            </p>
+        </footer>
+    </div>
+    <script>
+        const btnZh = document.getElementById('btn-zh');
+        const btnEn = document.getElementById('btn-en');
+        btnZh.onclick = function() {
+            document.body.classList.remove('en');
+            btnZh.classList.add('active');
+            btnEn.classList.remove('active');
+        };
+        btnEn.onclick = function() {
+            document.body.classList.add('en');
+            btnEn.classList.add('active');
+            btnZh.classList.remove('active');
+        };
+    </script>
+</body>
+</html>
