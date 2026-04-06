@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title>文钊 | 个人主页</title>
+    <title>文钊 - 个人百科</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="style.css">
     <style>
@@ -13,35 +13,29 @@
             background: #f7f8fa;
             color: #222;
         }
-        .navbar {
+        .baike-navbar {
             width: 100%;
             background: #fff;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            border-bottom: 1px solid #e5e6eb;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 0 40px;
+            padding: 0 32px;
+            height: 56px;
             position: fixed;
             top: 0;
             left: 0;
             z-index: 100;
-            height: 60px;
         }
-        .navbar .logo {
-            font-size: 1.5em;
+        .baike-navbar .baike-logo {
+            font-size: 1.6em;
             font-weight: bold;
-            color: #2a7ae2;
-            letter-spacing: 1px;
-        }
-        .navbar nav a {
-            margin: 0 18px;
             color: #222;
-            text-decoration: none;
-            font-size: 1em;
-            transition: color 0.2s;
+            letter-spacing: 2px;
         }
-        .navbar nav a:hover {
+        .baike-navbar .baike-logo .baike {
             color: #2a7ae2;
+            font-weight: bold;
         }
         .lang-btns {
             position: static;
@@ -61,47 +55,81 @@
             background: #2a7ae2;
             color: #fff;
         }
-        .hero {
-            padding: 120px 0 60px 0;
-            background: linear-gradient(90deg, #eaf1fb 0%, #fff 100%);
+        .main-content {
+            display: flex;
+            max-width: 1100px;
+            margin: 80px auto 0 auto;
+            gap: 32px;
+            align-items: flex-start;
+        }
+        .side-card {
+            width: 270px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            padding: 28px 20px 20px 20px;
             text-align: center;
         }
-        .hero h1 {
-            font-size: 2.8em;
-            margin-bottom: 16px;
+        .side-card .avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: #eaf1fb;
+            margin: 0 auto 18px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5em;
+            color: #2a7ae2;
+            overflow: hidden;
+        }
+        .side-card h1 {
+            font-size: 1.5em;
+            margin: 0 0 8px 0;
             font-weight: 700;
         }
-        .hero p {
-            font-size: 1.3em;
+        .side-card .subtitle {
+            color: #888;
+            font-size: 1.05em;
+            margin-bottom: 18px;
+        }
+        .side-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            text-align: left;
+        }
+        .side-card ul li {
+            margin-bottom: 10px;
+            font-size: 1em;
+        }
+        .side-card .contact {
+            margin-top: 18px;
+            font-size: 0.98em;
             color: #555;
-            margin-bottom: 0;
+            word-break: break-all;
         }
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
+        .entry-content {
+            flex: 1;
             background: #fff;
-            border-radius: 12px;
-            box-shadow: 0 2px 16px rgba(0,0,0,0.07);
-            padding: 40px 32px 24px 32px;
-            margin-top: 40px;
+            border-radius: 10px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            padding: 36px 38px 28px 38px;
         }
-        section {
-            margin-bottom: 40px;
-        }
-        section h2 {
-            font-size: 1.4em;
+        .entry-content h2 {
+            font-size: 1.25em;
             color: #2a7ae2;
             border-left: 4px solid #2a7ae2;
             padding-left: 10px;
-            margin-bottom: 18px;
+            margin-bottom: 16px;
             font-weight: 600;
         }
-        ul {
+        .entry-content ul {
             list-style: none;
             padding-left: 0;
-            margin: 0;
+            margin: 0 0 18px 0;
         }
-        ul li {
+        .entry-content ul li {
             margin-bottom: 12px;
             line-height: 1.7;
         }
@@ -128,10 +156,10 @@
             font-size: 0.95em;
             margin: 40px 0 10px 0;
         }
-        @media (max-width: 700px) {
-            .navbar { padding: 0 10px; }
-            .container { padding: 20px 6px 12px 6px; }
-            .hero { padding: 80px 0 30px 0; }
+        @media (max-width: 900px) {
+            .main-content { flex-direction: column; gap: 0; }
+            .side-card { width: 100%; margin-bottom: 20px; }
+            .entry-content { padding: 24px 10px 18px 10px; }
         }
         .lang-zh { display: block; }
         .lang-en { display: none; }
@@ -140,109 +168,115 @@
     </style>
 </head>
 <body>
-    <div class="navbar">
-        <div class="logo">
-            <span class="lang-zh">文钊</span>
-            <span class="lang-en">Marvin Wen</span>
+    <div class="baike-navbar">
+        <div class="baike-logo">
+            <span class="lang-zh">文钊 <span class="baike">百科</span></span>
+            <span class="lang-en">Marvin Wen <span class="baike">Baike</span></span>
         </div>
-        <nav>
-            <a href="#about"><span class="lang-zh">基本情况</span><span class="lang-en">About</span></a>
-            <a href="#education"><span class="lang-zh">教育经历</span><span class="lang-en">Education</span></a>
-            <a href="#projects"><span class="lang-zh">项目经历</span><span class="lang-en">Projects</span></a>
-            <a href="#skills"><span class="lang-zh">技术栈</span><span class="lang-en">Tech Stack</span></a>
-        </nav>
         <div class="lang-btns">
             <button id="btn-zh" class="active">中文</button>
             <button id="btn-en">EN</button>
         </div>
     </div>
-    <div class="hero">
-        <h1>
-            <span class="lang-zh">Go/Web3 全栈开发者</span>
-            <span class="lang-en">Go/Web3 Full Stack Developer</span>
-        </h1>
-        <p>
-            <span class="lang-zh">专注于高性能后端、分布式系统与区块链创新应用</span>
-            <span class="lang-en">Focus on high-performance backend, distributed systems, and blockchain innovation</span>
-        </p>
-    </div>
-    <div class="container">
-        <section id="about">
-            <h2>
-                <span class="lang-zh">基本情况</span>
-                <span class="lang-en">About</span>
-            </h2>
+    <div class="main-content">
+        <aside class="side-card">
+            <div class="avatar">
+                <!-- 可替换为头像图片 -->
+                <span>WZ</span>
+            </div>
+            <h1>
+                <span class="lang-zh">文钊</span>
+                <span class="lang-en">Marvin Wen</span>
+            </h1>
+            <div class="subtitle">
+                <span class="lang-zh">Go/Web3 全栈开发者</span>
+                <span class="lang-en">Go/Web3 Full Stack Developer</span>
+            </div>
             <ul>
-                <li>
-                    <span class="lang-zh">邮箱：marvin.wensap@gmail.com</span>
-                    <span class="lang-en">Email: marvin.wensap@gmail.com</span>
-                </li>
                 <li>
                     <span class="lang-zh">现居地：成都</span>
                     <span class="lang-en">Location: Chengdu</span>
                 </li>
                 <li>
-                    <span class="lang-zh">热爱技术，专注于Web开发、系统架构与区块链创新。</span>
-                    <span class="lang-en">Passionate about technology, focusing on web development, system architecture, and blockchain innovation.</span>
+                    <span class="lang-zh">硕士 · 电子科技大学</span>
+                    <span class="lang-en">M.S. · UESTC</span>
                 </li>
             </ul>
-        </section>
-        <section id="education">
-            <h2>
-                <span class="lang-zh">教育经历</span>
-                <span class="lang-en">Education</span>
-            </h2>
-            <ul>
-                <li>
-                    <span class="lang-zh">2019 - 2022 &nbsp; 电子科技大学 &nbsp; 软件工程 硕士</span>
-                    <span class="lang-en">2019 - 2022 &nbsp; UESTC &nbsp; M.S. in Software Engineering</span>
-                </li>
-                <li>
-                    <span class="lang-zh">2015 - 2019 &nbsp; 西南石油大学 &nbsp; 软件工程 本科</span>
-                    <span class="lang-en">2015 - 2019 &nbsp; SWPU &nbsp; B.S. in Software Engineering</span>
-                </li>
-            </ul>
-        </section>
-        <section id="projects">
-            <h2>
-                <span class="lang-zh">项目经历</span>
-                <span class="lang-en">Projects</span>
-            </h2>
-            <ul>
-                <li>
-                    <strong>
-                        <span class="lang-zh">智能问答系统</span>
-                        <span class="lang-en">Intelligent Q&A System</span>
-                    </strong>
-                    <span class="lang-zh">（2022）<br>负责前后端架构设计，实现自然语言处理与知识图谱集成。</span>
-                    <span class="lang-en">(2022)<br>Responsible for frontend and backend architecture, integrating NLP and knowledge graph.</span>
-                </li>
-                <li>
-                    <strong>
-                        <span class="lang-zh">在线协作文档平台</span>
-                        <span class="lang-en">Online Collaborative Document Platform</span>
-                    </strong>
-                    <span class="lang-zh">（2021）<br>参与实时协作功能开发，优化系统性能与用户体验。</span>
-                    <span class="lang-en">(2021)<br>Developed real-time collaboration features, optimized performance and user experience.</span>
-                </li>
-            </ul>
-        </section>
-        <section id="skills">
-            <h2>
-                <span class="lang-zh">技术栈</span>
-                <span class="lang-en">Tech Stack</span>
-            </h2>
-            <div class="skills">
-                <span>Go</span>
-                <span>JavaScript</span>
-                <span>Python</span>
-                <span>Docker</span>
-                <span>Git</span>
-                <span>MySQL</span>
-                <span>Kubernetes</span>
-                <span>Azure Cloud</span>
+            <div class="contact">
+                <span class="lang-zh">邮箱：marvin.wensap@gmail.com</span>
+                <span class="lang-en">Email: marvin.wensap@gmail.com</span>
             </div>
-        </section>
+        </aside>
+        <main class="entry-content">
+            <section id="about">
+                <h2>
+                    <span class="lang-zh">简介</span>
+                    <span class="lang-en">Profile</span>
+                </h2>
+                <ul>
+                    <li>
+                        <span class="lang-zh">热爱技术，专注于Web开发、系统架构与区块链创新。</span>
+                        <span class="lang-en">Passionate about technology, focusing on web development, system architecture, and blockchain innovation.</span>
+                    </li>
+                </ul>
+            </section>
+            <section id="education">
+                <h2>
+                    <span class="lang-zh">教育经历</span>
+                    <span class="lang-en">Education</span>
+                </h2>
+                <ul>
+                    <li>
+                        <span class="lang-zh">2019 - 2022 &nbsp; 电子科技大学 &nbsp; 软件工程 硕士</span>
+                        <span class="lang-en">2019 - 2022 &nbsp; UESTC &nbsp; M.S. in Software Engineering</span>
+                    </li>
+                    <li>
+                        <span class="lang-zh">2015 - 2019 &nbsp; 西南石油大学 &nbsp; 软件工程 本科</span>
+                        <span class="lang-en">2015 - 2019 &nbsp; SWPU &nbsp; B.S. in Software Engineering</span>
+                    </li>
+                </ul>
+            </section>
+            <section id="projects">
+                <h2>
+                    <span class="lang-zh">项目经历</span>
+                    <span class="lang-en">Projects</span>
+                </h2>
+                <ul>
+                    <li>
+                        <strong>
+                            <span class="lang-zh">智能问答系统</span>
+                            <span class="lang-en">Intelligent Q&A System</span>
+                        </strong>
+                        <span class="lang-zh">（2022）<br>负责前后端架构设计，实现自然语言处理与知识图谱集成。</span>
+                        <span class="lang-en">(2022)<br>Responsible for frontend and backend architecture, integrating NLP and knowledge graph.</span>
+                    </li>
+                    <li>
+                        <strong>
+                            <span class="lang-zh">在线协作文档平台</span>
+                            <span class="lang-en">Online Collaborative Document Platform</span>
+                        </strong>
+                        <span class="lang-zh">（2021）<br>参与实时协作功能开发，优化系统性能与用户体验。</span>
+                        <span class="lang-en">(2021)<br>Developed real-time collaboration features, optimized performance and user experience.</span>
+                    </li>
+                </ul>
+            </section>
+            <section id="skills">
+                <h2>
+                    <span class="lang-zh">技术栈</span>
+                    <span class="lang-en">Tech Stack</span>
+                </h2>
+                <div class="skills">
+                    <span>Go</span>
+                    <span>JavaScript</span>
+                    <span>Python</span>
+                    <span>Docker</span>
+                    <span>Git</span>
+                    <span>MySQL</span>
+                    <span>Kubernetes</span>
+                    <span>Azure Cloud</span>
+                </div>
+            </section>
+        </main>
     </div>
     <footer>
         <p>
